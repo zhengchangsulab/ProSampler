@@ -28,17 +28,17 @@ Once you download and unzip PROSAMPLER.tar.gz, you will see several files:
 
 In the following context, we use ProSampler.unix as an example.
 
-If you want to comple the program, just type:
+If you want to compile the program, just type:
 g++ -o ProSampler.unix ProSampler.cc
 
-If you want to let the program run, do:
+If you want to run let the program, type:
 chmod +x ProSampler.unix
 
 Now you can run the program "ProSampler" by typing:
 ./proSampler [options]
 
-As to the two programs, if you type these commands without any input parameter options, you can 
-get a list on how to set the parameters.
+If you type the command without any input parameter option, you will
+get a menue of how to set the parameters.
 
 ***************************************************************************************************
 
@@ -50,14 +50,13 @@ Usage:
 
 ./ProSampler -i input_file_name [options]
 
-The input file should be plain TEXT file, rather than WORD or HTML formats. In fact, proSampler 
-can recognize restricted FASTA format:
+The input file should be a plain TEXT file in FASTA format as follows,  
 >sequence1 name
 ACCCGGTTAACC [sequence 1 as ONE LINE]
 >sequence2 name
 ACATGTGTGTGA [sequence 2 as ONE LINE]
 
-If you have the following sequence format:
+If you have the following sequences in multiple lines as follows, 
 >seq1
 ATCTGAATGCA
 AGCTGCACACGTTTTT
@@ -72,8 +71,7 @@ CAGATAAA
 1 AGTCG GTCAC GCACG CACAC 20
 21 CGATT CAAAT TGTGA CGACG 40
 
-you should merge multiple lines belonging to the same sequence into one,
-before running ProSampler.
+you should merge multiple lines belonging to the same sequence into one, before running ProSampler.
 
 ****************************************************************************************************
 
@@ -86,32 +84,32 @@ Description of the optional parameters of ProSampler:
 	The background file should also be in FASTA format, same as input file.
 
 -o	<prefix of output files>
-	Three files in three types of formats will be outputted after using ProSampler, i.e.
+	Motifs will be output three different formats in in three files, i.e.
 	meme, site and spic formats.
-	- meme - The position specific matrices of motifs.
-	- site - The binding site information of motifs.
+	- meme - The position specific weight matrices of motifs.
+	- site - The binding sites of each motif.
 	- spic - The input format for SPIC program used to compare motifs.
 
 -f	<strand flag variable (default: 2)>
 	- 1 - Only consider the forward strands of the input sequences.
-	- 2 - Consider both forward strands as well as their compplementary strands.
+	- 2 - Consider both forward and reverse compplementary strands.
 
 -k	<the length of preliminary motifs (default: 8)>
 	The length of k-mers used to identify preliminary motifs.
 
--l	<the length of the flanking segment lengths used to trim motifs (default: 6)>
+-l	<the length of the flanking segment lengths used to extend the motifs (default: 6)>
 
--f	<the number of iterations to identify preliminary motifs (default: 100)>
-	A number of iterations should be conducted to identify preliminary motifs.
+-f	<the number of cycles Gibis sampling to identify preliminary motifs (default: 100)>
+	A number of iterations is needed to identify preliminary motifs.
 
 -t	<the cutoff to choose significant k-mers (default: 8.0)>
-	Two proportion z-test is used.
+	A higher z-value cutoff for two proportion z-test.
 
 -w	<the cutoff to choose subsignificant k-mers (default: 4.5)>
-	Two proportion z-test is used.
+	A lower z-value cutoff for two proportion z-test
 
--z	<the cutoff of two proportion z-test in trimming motif lengths (default: 1.96)>
-	Larger cutoff implies higher conservation level.
+-z	<the cutoff of two proportion z-test in extending motif lengths (default: 1.96)>
+	A larger cutoff implies higher conservation level.
 
 -c	<the cutoff of Hamming Distance used to merge similar k-mers (default: 1)>
 
