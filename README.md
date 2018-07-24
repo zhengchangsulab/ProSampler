@@ -78,40 +78,47 @@ you should merge multiple lines belonging to the same sequence into one, before 
 Description of the optional parameters of ProSampler:
 
 -i	<input file path>
-	The name of the input file in FASTA format.
+	Name of the input file in FASTA format.
 
 -b	<background file path>
-	The background file should also be in FASTA format, same as input file.
-
+	Name of the background file in FASTA format.
+	
+-d:      <Mumber of degenerate positions in a PSM>
+	
 -o	<prefix of output files>
-	Motifs will be output three different formats in in three files, i.e.
+	Prefix name of the output files in three different formats, i.e.
 	meme, site and spic formats.
 	- meme - The position specific weight matrices of motifs.
 	- site - The binding sites of each motif.
 	- spic - The input format for SPIC program used to compare motifs.
+	
+-m:      <number of motifs to be output (default: All)>
+        ProSampler finds all the motifs in the dataset, but the user can choose to output the top n of them.
+	
+-f	<number of cycles of Gibbs sampling to identify preliminary motifs (default: 100)>
+	A number of cycles are needed to identify preliminary motifs.	
 
--f	<strand flag variable (default: 2)>
-	- 1 - Only consider the forward strands of the input sequences.
-	- 2 - Consider both forward and reverse compplementary strands.
-
--k	<the length of preliminary motifs (default: 8)>
+-k	<length of preliminary motifs (default: 8)>
 	The length of k-mers used to identify preliminary motifs.
 
--l	<the length of the flanking segment lengths used to extend the motifs (default: 6)>
+-l	<length of the flanking l-mers to extend the prelininary motifs (default: 6)>
 
--f	<the number of cycles Gibis sampling to identify preliminary motifs (default: 100)>
-	A number of iterations is needed to identify preliminary motifs.
+-c	<cutoff of Hamming distance to merge similar k-mers (default: 1)>
 
--t	<the cutoff to choose significant k-mers (default: 8.0)>
+-r      <cutoff of Hamming distance delete redundant motifs based on consensus (default: 1)>
+
+-p      <number (1 or 2) of strands to be considerd (default: 2)>
+	- 1 - Only consider the forward strand of the input sequences.
+	- 2 - Consider both the forward and reverse compplementary strands. 
+	
+-t	<cutoff of z-value to choose significant k-mers (default: 8.0)>
 	A higher z-value cutoff for two proportion z-test.
 
--w	<the cutoff to choose subsignificant k-mers (default: 4.5)>
+-w	<cutoff of z-value to choose subsignificant k-mers (default: 4.5)>
 	A lower z-value cutoff for two proportion z-test
 
--z	<the cutoff of two proportion z-test in extending motif lengths (default: 1.96)>
+-z	<cutoff of z-value to extend preliniary motif lengths (default: 1.96)>
 	A larger cutoff implies higher conservation level.
-
--c	<the cutoff of Hamming Distance used to merge similar k-mers (default: 1)>
 
 -s	<the cutoff of SW score used to connect nodes in Similarity Graph (default: 1.8)>
 
