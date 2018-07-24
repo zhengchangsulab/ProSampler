@@ -83,7 +83,7 @@ Description of the optional parameters of ProSampler:
 -b	<background file path>
 	Name of the background file in FASTA format.
 	
--d:      <Mumber of degenerate positions in a PSM>
+-d      <Mumber of degenerate positions in a PSM>
 	
 -o	<prefix of output files>
 	Prefix name of the output files in three different formats, i.e.
@@ -92,7 +92,7 @@ Description of the optional parameters of ProSampler:
 	- site - The binding sites of each motif.
 	- spic - The input format for SPIC program used to compare motifs.
 	
--m:      <number of motifs to be output (default: All)>
+-m      <number of motifs to be output (default: All)>
         ProSampler finds all the motifs in the dataset, but the user can choose to output the top n of them.
 	
 -f	<number of cycles of Gibbs sampling to identify preliminary motifs (default: 100)>
