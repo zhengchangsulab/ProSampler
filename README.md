@@ -20,35 +20,42 @@ to https://github.com/zhengchangsulab/prosampler.
 Start using ProSampler:
 
 Once you download and unzip PROSAMPLER.tar.gz, you will see several files:
-1. ProSampler.cpp
-2. ProSampler.unix
-3. ProSampler.maxos
-4. ProSampler.exe
-5. README.txt
 
-In the following context, we use ProSampler.unix as an example.
+1. ProSampler.cc
+2. ProSampler.unix
+3. ProSampler.macos
+4. ProSampler.exe
+5. Markov.cc
+6. Markov.unix
+7. Markov.macos
+8. Markov.exe
+9. README.txt
+
+Before motif finding, you need to provide a dataset of background sequences.
+If no background dataset is provided, we provide a program named "Markov"
+used to generate background sequences.
+
+In the following context, we use Markov.unix as an example.
 
 If you want to compile the program, just type:
-g++ -o ProSampler.unix ProSampler.cc
+g++ -o Markov.unix Markov.cc
 
-If you want to run let the program, type:
-chmod +x ProSampler.unix
+If you want to run the program, type:
+chmod +x Markov.unix
 
-Now you can run the program "ProSampler" by typing:
-./proSampler [options]
+Now you can run the program "Markov" by typing:
+./Markov.unix [options]
 
 If you type the command without any input parameter option, you will
 get a menue of how to set the parameters.
 
 ***************************************************************************************************
 
-Input file:
-
-The following shows the details about parameter specification.
-
 Usage:
 
-./ProSampler -i input_file_name [options]
+./Markov -i input_file_name -b output_file_name -f order_of_markov_model
+
+- input_file - 
 
 The input file should be a plain TEXT file in FASTA format as follows,  
 >sequence1 name
@@ -68,10 +75,25 @@ AGCTGCACACTTTT
 CAGATAAA
 
 >seq3
-1 AGTCG GTCAC GCACG CACAC 20
-21 CGATT CAAAT TGTGA CGACG 40
+AGTCG GTCAC GCACG CACAC
+CGATT CAAAT TGTGA CGACG
 
-you should merge multiple lines belonging to the same sequence into one, before running ProSampler.
+you should merge multiple lines belonging to the same sequence into one, before running Markov.
+
+- output file -
+
+The output file has the same format as that of the input file.
+
+- order_of_markov_model -
+
+We provided four choices of the order of Markov Model, i.e. 0, 1, 2, 3.
+The higher the order if Markov Model is, the more consistent the nucleotide frequencies
+are with each other between input and output data.
+
+***************************************************************************************************
+
+The compiling method of ProSampler is the same with that of Markov,
+and so is the format requirement of input data.
 
 ****************************************************************************************************
 
@@ -83,7 +105,7 @@ Description of the optional parameters of ProSampler:
 -b	<background file path>
 	Name of the background file in FASTA format.
 	
--d      <Mumber of degenerate positions in a PSM>
+-d  <Number of degenerate positions in a PSM>
 	
 -o	<prefix of output files>
 	Prefix name of the output files in three different formats, i.e.
@@ -92,8 +114,8 @@ Description of the optional parameters of ProSampler:
 	- site - The binding sites of each motif.
 	- spic - The input format for SPIC program used to compare motifs.
 	
--m      <number of motifs to be output (default: All)>
-        ProSampler finds all the motifs in the dataset, but the user can choose to output the top n of them.
+-m  <number of motifs to be output (default: All)>
+    ProSampler finds all the motifs in the dataset, but the user can choose to output the top n of them.
 	
 -f	<number of cycles of Gibbs sampling to identify preliminary motifs (default: 100)>
 	A number of cycles are needed to identify preliminary motifs.	
@@ -105,9 +127,9 @@ Description of the optional parameters of ProSampler:
 
 -c	<cutoff of Hamming distance to merge similar k-mers (default: 1)>
 
--r      <cutoff of Hamming distance delete redundant motifs based on consensus (default: 1)>
+-r	<cutoff of Hamming distance delete redundant motifs based on consensus (default: 1)>
 
--p      <number (1 or 2) of strands to be considerd (default: 2)>
+-p  <number (1 or 2) of strands to be considerd (default: 2)>
 	- 1 - Only consider the forward strand of the input sequences.
 	- 2 - Consider both the forward and reverse compplementary strands. 
 	
