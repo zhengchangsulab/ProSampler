@@ -17,9 +17,7 @@ to https://github.com/zhengchangsulab/prosampler.
 
 **************************************************************************************************
 
-Start using ProSampler:
-
-Once you download and unzip PROSAMPLER.tar.gz, you will see several files:
+To use ProSampler, download and unzip PROSAMPLER.tar.gz, and you will see several files:
 
 1. ProSampler.cc
 2. ProSampler.unix
@@ -31,13 +29,9 @@ Once you download and unzip PROSAMPLER.tar.gz, you will see several files:
 8. Markov.exe
 9. README.txt
 
-Before motif finding, you need to provide a dataset of background sequences.
-If no background dataset is provided, we provide a program named "Markov"
-used to generate background sequences.
+In additon to your sequence file, ProSampler needs another file containing background sequences that match your input seqeunces. If no background sequences file is available to you, we provide a program named "Markov" to generate the background sequences file.
 
-In the following context, we use Markov.unix as an example.
-
-If you want to compile the program, just type:
+If you want to compile the Markov program, just type (suppose you are using a unix plaform):
 g++ -o Markov.unix Markov.cc
 
 If you want to run the program, type:
@@ -57,13 +51,13 @@ Usage:
 
 - input_file - 
 
-The input file should be a plain TEXT file in FASTA format as follows,  
+The input file should be a plain TEXT file in the FASTA format as follows,  
 >sequence1 name
 ACCCGGTTAACC [sequence 1 as ONE LINE]
 >sequence2 name
 ACATGTGTGTGA [sequence 2 as ONE LINE]
 
-If you have the following sequences in multiple lines as follows, 
+If your sequences are listed in multiple lines as follows, 
 >seq1
 ATCTGAATGCA
 AGCTGCACACGTTTTT
@@ -78,7 +72,7 @@ CAGATAAA
 AGTCG GTCAC GCACG CACAC
 CGATT CAAAT TGTGA CGACG
 
-you should merge multiple lines belonging to the same sequence into one, before running Markov.
+you need to merge multiple lines belonging to the same sequence into one, before running Markov.
 
 - output file -
 
@@ -86,14 +80,12 @@ The output file has the same format as that of the input file.
 
 - order_of_markov_model -
 
-We provided four choices of the order of Markov Model, i.e. 0, 1, 2, 3.
-The higher the order if Markov Model is, the more consistent the nucleotide frequencies
-are with each other between input and output data.
+We provide four choices of the order of Markov Model, i.e. 0, 1, 2, 3.
+The higher the order of the Markov Model, the more consistent between the nucleotide frequencies of input and output sequences.
 
 ***************************************************************************************************
 
-The compiling method of ProSampler is the same with that of Markov,
-and so is the format requirement of input data.
+The ProSampler can be similarly compile as Markov, and it requirs the sequences files in the same format as does Markov.
 
 ****************************************************************************************************
 
@@ -114,7 +106,7 @@ Description of the optional parameters of ProSampler:
 	- site - The binding sites of each motif.
 	- spic - The input format for SPIC program used to compare motifs.
 	
--m  <number of motifs to be output (default: All)>
+-m  <n, number of motifs to be output (default: All)>
     ProSampler finds all the motifs in the dataset, but the user can choose to output the top n of them.
 	
 -f	<number of cycles of Gibbs sampling to identify preliminary motifs (default: 100)>
@@ -123,26 +115,26 @@ Description of the optional parameters of ProSampler:
 -k	<length of preliminary motifs (default: 8)>
 	The length of k-mers used to identify preliminary motifs.
 
--l	<length of the flanking l-mers to extend the prelininary motifs (default: 6)>
+-l	<length of the flanking l-mers to extend the preliminary motifs (default: 6)>
 
 -c	<cutoff of Hamming distance to merge similar k-mers (default: 1)>
 
--r	<cutoff of Hamming distance delete redundant motifs based on consensus (default: 1)>
+-r	<cutoff of Hamming distance to delete redundant motifs based on consensus sequences (default: 1)>
 
--p  <number (1 or 2) of strands to be considerd (default: 2)>
+-p  <number (1 or 2) of strands to be considered (default: 2)>
 	- 1 - Only consider the forward strand of the input sequences.
 	- 2 - Consider both the forward and reverse compplementary strands. 
 	
 -t	<cutoff of z-value to choose significant k-mers (default: 8.0)>
-	A higher z-value cutoff for two proportion z-test.
+	A higher z-value cutoff for two-proportion z-test.
 
 -w	<cutoff of z-value to choose subsignificant k-mers (default: 4.5)>
-	A lower z-value cutoff for two proportion z-test
+	A lower z-value cutoff for two-proportion z-test
 
--z	<cutoff of z-value to extend preliniary motif lengths (default: 1.96)>
+-z	<cutoff of z-value to extend preliminary motif lengths (default: 1.96)>
 	A larger cutoff implies higher conservation level.
 
--s	<the cutoff of SW score used to connect nodes in Similarity Graph (default: 1.8)>
+-s	<cutoff of SW score used to connect nodes in thhe motif similarity graph (default: 1.8)>
 
 -h	<print this message (default: no)>
 
