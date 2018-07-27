@@ -5,10 +5,10 @@ Overview:
 ProSampler
 Version 1.0
 Release July 12-th, 2018
-An ultra-fast motif finding program on large ChIP-seq datasets
+An ultra-fast motif finding program in large ChIP-seq datasets
 
 Reference
-Li Y#, Ni P#, Zhang S, Li G, Su Z*. Ultra-fast and accurate motif finding in large ChIP-seq datasets
+Li Y, Ni P, Zhang S, Li G, Su Z. Ultra-fast and accurate motif finding in large ChIP-seq datasets
  reveals transcription factor binding patterns.
 
 ProSampler is free to academia. Please do not distribute the executable of the program to others 
@@ -17,7 +17,7 @@ to https://github.com/zhengchangsulab/prosampler.
 
 **************************************************************************************************
 
-To use ProSampler, download and unzip PROSAMPLER.tar.gz, and you will see several files:
+To use ProSampler, download and unzip PROSAMPLER.tar.gz, and you will see the following files:
 
 1. ProSampler.cc
 2. ProSampler.unix
@@ -29,19 +29,19 @@ To use ProSampler, download and unzip PROSAMPLER.tar.gz, and you will see severa
 8. Markov.exe
 9. README.txt
 
-In additon to your sequence file, ProSampler needs another file containing background sequences that match your input seqeunces. If no background sequences file is available to you, we provide a program named "Markov" to generate the background sequences file.
+In additon to your input sequence file, ProSampler needs another file containing background sequences that match your input seqeunces. If no background sequences file is available to you, we provide a program Markov to generate the background sequences file.
 
 If you want to compile the Markov program, just type (suppose you are using a unix plaform):
 g++ -o Markov.unix Markov.cc
 
-If you want to run the program, type:
+and:
 chmod +x Markov.unix
 
 Now you can run the program "Markov" by typing:
 ./Markov.unix [options]
 
 If you type the command without any input parameter option, you will
-get a menue of how to set the parameters.
+get following Usage information:
 
 ***************************************************************************************************
 
@@ -72,7 +72,7 @@ CAGATAAA
 AGTCG GTCAC GCACG CACAC
 CGATT CAAAT TGTGA CGACG
 
-you need to merge multiple lines belonging to the same sequence into one, before running Markov.
+you need to merge the lines belonging to the same sequence into one, before running Markov.
 
 - output file -
 
@@ -80,12 +80,12 @@ The output file has the same format as that of the input file.
 
 - order_of_markov_model -
 
-We provide four choices of the order of Markov Model, i.e. 0, 1, 2, 3.
-The higher the order of the Markov Model, the more consistent between the nucleotide frequencies of input and output sequences.
+We provide four choices of the order of the Markov Model, i.e. 0, 1, 2, 3.
+The higher the order of the Markov Model, the more consistence between the nucleotide frequencies of input and output sequences.
 
 ***************************************************************************************************
 
-The ProSampler can be similarly compile as Markov, and it requirs the sequences files in the same format as does Markov.
+The ProSampler program can be similarly compiled as the Markov program. ProSampler requirs the sequences files in the same format as does Markov.
 
 ****************************************************************************************************
 
