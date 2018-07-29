@@ -4,7 +4,7 @@ Overview:
 
 ProSampler
 Version 1.0
-Release July 12-th, 2018
+Release July 18-th, 2018
 An ultra-fast motif finding program in large ChIP-seq datasets
 
 Reference
@@ -24,68 +24,65 @@ To use ProSampler, download and unzip PROSAMPLER.tar.gz, and you will see the fo
 3. ProSampler.macos
 4. ProSampler.exe
 5. Markov.cc
-6. Markov.unix
-7. Markov.macos
-8. Markov.exe
-9. README.txt
+6. README.txt
 
-In additon to your input sequence file, ProSampler needs another file containing background sequences that match your input seqeunces. If no background sequences file is available to you, we provide a program Markov to generate the background sequences file.
+In additon to your input sequence file, ProSampler needs another file containing background 
+sequences that match your input seqeunces. If no background sequences file is available to you, 
+ProSampler will generate the background sequences file by itself.
 
-If you want to compile the Markov program, just type (suppose you are using a unix plaform):
-g++ -o Markov.unix Markov.cc
+If you want to compile the ProSampler program, just make sure that
+ProSampler.cc and Markov.cc are in the common current directory, and type 
+(suppose you are using a unix plaform):
+	
+	g++ -o ProSAMPLER.unix ProSampler.cc
 
 and:
-chmod +x Markov.unix
 
-Now you can run the program "Markov" by typing:
-./Markov.unix [options]
+	chmod +x ProSampler.unix
 
-If you type the command without any input parameter option, you will
-get following Usage information:
+Now you can run the program "ProSampler" by typing:
+./ProSampler.unix -i input_file [options]
 
 ***************************************************************************************************
-
-Usage:
-
-./Markov -i input_file_name -b output_file_name -f order_of_markov_model
 
 - input_file - 
 
-The input file should be a plain TEXT file in the FASTA format as follows,  
->sequence1 name
-ACCCGGTTAACC [sequence 1 as ONE LINE]
->sequence2 name
-ACATGTGTGTGA [sequence 2 as ONE LINE]
+The input file should be a plain TEXT file in the FASTA format as either type
+or mixed types of the follows,
+ 
+< 1 >
 
-If your sequences are listed in multiple lines as follows, 
->seq1
-ATCTGAATGCA
-AGCTGCACACGTTTTT
-CAGATAAA
+	>sequence1 name
+	ACCCGGTTAACC [sequence 1 as ONE LINE]
+	>sequence2 name
+	ACATGTGTGTGA [sequence 2 as ONE LINE]
 
->seq2
-AGTCAGACTACA
-AGCTGCACACTTTT
-CAGATAAA
 
->seq3
-AGTCG GTCAC GCACG CACAC
-CGATT CAAAT TGTGA CGACG
+< 2 >
+	>sequence1 name
+	ATCTGAATGCA
+	AGCTGCACACGTTTTT
+	CAGATAAA
 
-you need to merge the lines belonging to the same sequence into one, before running Markov.
+	>sequence2 name
+	AGTCAGACTACA
+	AGCTGCACACTTTT
+	CAGATAAA
 
-- output file -
+< 3 >
 
-The output file has the same format as that of the input file.
+	>sequence1 name
+	AGTCG GTCAC GCACG CACAC
+	CGATT CAAAT TGTGA CGACG
 
-- order_of_markov_model -
-
-We provide four choices of the order of the Markov Model, i.e. 0, 1, 2, 3.
-The higher the order of the Markov Model, the more consistence between the nucleotide frequencies of input and output sequences.
+	>sequence2 name
+	CTCA CTTTTGGG GCATCGAA
+	CG  ATTTTACGACC CAGTGG
 
 ***************************************************************************************************
 
-The ProSampler program can be similarly compiled as the Markov program. ProSampler requirs the sequences files in the same format as does Markov.
+If you type the command without any input parameter option, you will
+get following Usage information
 
 ****************************************************************************************************
 
@@ -95,9 +92,14 @@ Description of the optional parameters of ProSampler:
 	Name of the input file in FASTA format.
 
 -b	<background file path>
-	Name of the background file in FASTA format.
+	Name of the background file in FASTA format, 
+	or order of the Markov model to generate background seuquences
+	(default: 3, generate background sequences by using 3-rd order Markov model.
+	We provide four choices of the order of the Markov Model, i.e. 0, 1, 2, 3.
+	The higher the order of the Markov Model, the more consistence between the nucleotide 
+	frequencies of input and output sequences.)
 	
--d  <Number of degenerate positions in a PSM>
+-d	<Number of degenerate positions in a PSM>
 	
 -o	<prefix of output files>
 	Prefix name of the output files in three different formats, i.e.
@@ -106,8 +108,9 @@ Description of the optional parameters of ProSampler:
 	- site - The binding sites of each motif.
 	- spic - The input format for SPIC program used to compare motifs.
 	
--m  <n, number of motifs to be output (default: All)>
-    ProSampler finds all the motifs in the dataset, but the user can choose to output the top n of them.
+-m	<number of motifs to be output (default: All)>
+    	ProSampler finds all the motifs in the dataset, but the user can 
+	choose to output the top n of them.
 	
 -f	<number of cycles of Gibbs sampling to identify preliminary motifs (default: 100)>
 	A number of cycles are needed to identify preliminary motifs.	
@@ -121,7 +124,7 @@ Description of the optional parameters of ProSampler:
 
 -r	<cutoff of Hamming distance to delete redundant motifs based on consensus sequences (default: 1)>
 
--p  <number (1 or 2) of strands to be considered (default: 2)>
+-p	<number (1 or 2) of strands to be considered (default: 2)>
 	- 1 - Only consider the forward strand of the input sequences.
 	- 2 - Consider both the forward and reverse compplementary strands. 
 	
