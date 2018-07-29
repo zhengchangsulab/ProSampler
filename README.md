@@ -28,10 +28,10 @@ To use ProSampler, download and unzip PROSAMPLER.tar.gz, and you will see the fo
 
 In additon to your input sequence file, ProSampler needs another file containing background 
 sequences that match your input seqeunces. If no background sequences file is available to you, 
-ProSampler will generate the background sequences file by itself.
+ProSampler will generate it by itself.
 
-If you want to compile the ProSampler program, just make sure that
-ProSampler.cc and Markov.cc are in the common current directory, and type 
+If you want to compile the ProSampler program, make sure that
+ProSampler.cc and Markov.cc are in the current directory, and type 
 (suppose you are using a unix plaform):
 	
 	g++ -o ProSAMPLER.unix ProSampler.cc
@@ -48,7 +48,7 @@ Now you can run the program "ProSampler" by typing:
 - input_file - 
 
 The input file should be a plain TEXT file in the FASTA format as either type
-or mixed types of the follows,
+or mixed types of the following,
  
 < 1 >
 
