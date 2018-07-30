@@ -34,7 +34,7 @@ If you want to compile the ProSampler program, make sure that
 ProSampler.cc and Markov.cc are in the current directory, and type 
 (suppose you are using a unix plaform):
 	
-	g++ -o ProSAMPLER.unix ProSampler.cc
+	g++ -o ProSampler.unix ProSampler.cc
 
 and:
 
