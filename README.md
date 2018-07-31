@@ -137,7 +137,7 @@ Description of the optional parameters of ProSampler:
 -z	<cutoff of z-value to extend preliminary motif lengths (default: 1.96)>
 	A larger cutoff implies higher conservation level.
 
--s	<cutoff of SW score used to connect nodes in thhe motif similarity graph (default: 1.8)>
+-s	<cutoff of SW score used to connect nodes in the motif similarity graph (default: 1.8)>
 
 -h	<print this message (default: no)>
 
