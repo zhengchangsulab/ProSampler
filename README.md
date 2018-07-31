@@ -99,7 +99,7 @@ Description of the optional parameters of ProSampler:
 	The higher the order of the Markov Model, the more consistence between the nucleotide 
 	frequencies of input and output sequences.)
 	
--d	<Number of degenerate positions in a PSM>
+-d	<the cutoff of Hamming Distance between any two k-mers in a PWM (default: 1)>
 	
 -o	<prefix of output files>
 	Prefix name of the output files in three different formats, i.e.
