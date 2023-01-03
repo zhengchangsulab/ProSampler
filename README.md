@@ -2,10 +2,13 @@
 
 Overview:
 
-ProSampler
+ProSampler: An ultra-fast motif finding program in large ChIP-seq datasets
+
 Version 1.0
 Release July 18-th, 2018
-An ultra-fast motif finding program in large ChIP-seq datasets
+
+Version 1.5
+Release Jan-3, 2023, fixed a few bugs in Version 1.0
 
 Reference
 Li Y, Ni P, Zhang S, Li G, Su Z. Ultra-fast and accurate motif finding in large ChIP-seq datasets
@@ -23,18 +26,19 @@ To use ProSampler, download and unzip PROSAMPLER.tar.gz, and you will see the fo
 2. ProSampler.unix
 3. ProSampler.macos
 4. ProSampler.exe
-5. Markov.cc
+5. Markov3.cc
 6. README.txt
 
 In additon to your input sequence file, ProSampler needs another file containing background 
-sequences that match your input seqeunces. If no background sequences file is available to you, 
-ProSampler will generate it by itself.
+sequences that match your input seqeunces. If no background sequences file is specified, 
+ProSampler will generate it using a third order Markov chain model based on the nucleotide 
+frequencies in the input file.
 
 If you want to compile the ProSampler program, make sure that
-ProSampler.cc and Markov.cc are in the current directory, and type 
+ProSampler.cc and Markov3.cc are in the current directory, and type 
 (suppose you are using a unix plaform):
 	
-	g++ -o ProSampler.unix ProSampler.cc
+	g++ -O2 -o ProSampler.unix ProSampler.cc
 
 and:
 
@@ -115,7 +119,7 @@ Description of the optional parameters of ProSampler:
 -f	<number of cycles of Gibbs sampling to identify preliminary motifs (default: 100)>
 	A number of cycles are needed to identify preliminary motifs.	
 
--k	<length of preliminary motifs (default: 8)>
+-k	<length of preliminary motifs (default: 9)>
 	The length of k-mers used to identify preliminary motifs.
 
 -l	<length of the flanking l-mers to extend the preliminary motifs (default: 6)>
