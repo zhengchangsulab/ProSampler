@@ -22,9 +22,9 @@ to https://github.com/zhengchangsulab/prosampler.
 
 To use ProSampler, download and unzip PROSAMPLER.tar.gz, and you will see the following files:
 
-1. ProSampler.cc
-2. ProSampler.unix
-3. ProSampler.macos
+1. ProSampler_v1.5.cc
+2. ProSampler.linux
+3. ProSampler.os
 4. ProSampler.exe
 5. Markov3.cc
 6. README.txt
